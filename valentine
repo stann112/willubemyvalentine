@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Will You Be My Valentine?</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: #fff;
+    }
+    #yes-button {
+      background-color: #28a745;
+    }
+    #no-button {
+      background-color: #dc3545;
+    }
+    #confirmation-message {
+      font-size: 24px;
+      color: #28a745;
+      margin-top: 20px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 id="question">Will You Be My Valentine?</h1>
+  <button id="yes-button">Yes</button>
+  <button id="no-button">No</button>
+  <div id="confirmation-message"></div>
+
+  <script>
+    let noButtonClickCount = 0;
+
+    document.getElementById('no-button').addEventListener('click', function() {
+      noButtonClickCount++;
+      if (noButtonClickCount > 0) {
+        document.getElementById('yes-button').style.fontSize = `${18 + noButtonClickCount * 2}px`;
+      }
+
+      let sureText = "Are you sure?";
+      for (let i = 0; i < noButtonClickCount; i++) {
+        sureText += " really";
+      }
+      sureText += " sure?";
+      document.getElementById('question').textContent = sureText;
+    });
+
+    document.getElementById('yes-button').addEventListener('click', function() {
+      document.getElementById('confirmation-message').textContent = "Great! :DD <33";
+      document.getElementById('confirmation-message').style.display = "block";
+    });
+  </script>
+</body>
+</html>
